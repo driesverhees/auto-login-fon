@@ -11,13 +11,13 @@ if (cat blank_page.html | grep -q -i "proximus"); then
 		# Send POST request		
 		wget -qO- --output-document=return.html --post-data="UserName=$FON_USERNAME&Password=$FON_PASSWORD&chooseUser=passuser&rememberMe=true&_rememberMe=on&login=Login&language=en_GB" "$CLEANED_POST_ACTION"
 		if (cat return.html | grep -q -i "success"); then
-			echo "FON-network: Login successfull"
+			logger "FON-network: Login successfull"
 		else
-			echo "FON-network: Login failed"
+			logger "FON-network: Login failed"
 		fi
 		rm return.html
 	else
-		echo "FON-network: Unable to get post url"
+		logger "FON-network: Unable to get post url"
 
 	fi
 fi
